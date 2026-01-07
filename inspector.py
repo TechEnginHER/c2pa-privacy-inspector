@@ -55,10 +55,14 @@ def inspect_provenance(image_path):
         elif "C2PA" in claim:
             print("    -> INFO: Signed by standard C2PA tool.")
 
-    except c2pa.Error.ManifestNotFound:
-         print("[-] No Content Credentials found (C2PA signature missing).")
+    except c2pa.C2paError as e:
+            # This catches the specific "No JUMBF" error cleanly
+        if "ManifestNotFound" in str(e):
+                print("[-] No Content Credentials found. This image is 'naked'.")
+        else:
+                print(f"[!] C2PA Error: {e}")
     except Exception as e:
-        print(f"[!] Error processing file: {e}")
+        print(f"[!] Unexpected Error: {e}")
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
