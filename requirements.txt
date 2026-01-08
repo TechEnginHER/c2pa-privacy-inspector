@@ -1,0 +1,2 @@
+streamlit
+c2pa-python
