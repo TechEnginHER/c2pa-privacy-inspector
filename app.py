@@ -49,7 +49,6 @@ with st.sidebar:
     # Custom "Grey Box" instead of blue st.info
     st.markdown("""
         <div style="background-color: #a3a5a89e; padding: 18px; border-radius: 8px; border: 4px dotted #a3a5a89e; font-size: 16px; color: #333;">
-        
             This tool reverses the C2PA standard to reveal behavioral fingerprints in digital media.
         </div>
     """, unsafe_allow_html=True)
